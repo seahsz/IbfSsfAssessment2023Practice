@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Your Order</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="title">
+        <img src="/images/logo.jpg" class="thumbnail">
+        <h2>Panucci's Pizza</h2>
+    </div>
+
+    <h2>Select a pizza</h2>
+
+    <form method="POST" action="/pizza" th:object="${pizzaOrder}">
+        <table>
+            <tr>
+                <td><img src="/images/Bella.png" class="pizza"></td>
+                <td><img src="/images/Margherita.png" class="pizza"></td>
+                <td><img src="/images/Marinara.png" class="pizza"></td>
+                <td><img src="/images/SpianataCalabrese.png" class="pizza"></td>
+                <td><img src="/images/TrioFormaggio.png" class="pizza"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="radio" th:field="*{pizza}" value="bella" id="bella">
+                    <label for="bella">Bella</label>
+                </td>
+                <td>
+                    <input type="radio" th:field="*{pizza}" value="margherita" id="margherita">
+                    <label for="margherita">Margherita</label>
+                </td>
+                <td>
+                    <input type="radio" th:field="*{pizza}" value="marinara" id="marinara">
+                    <label for="marinara">Marinara</label>
+                </td>
+                <td>
+                    <input type="radio" th:field="*{pizza}" value="spianatacalabrese" id="spianatacalabrese">
+                    <label for="spianatacalabrese">Spianata Calabrese</label>
+                </td>
+                <td>
+                    <input type="radio" th:field="*{pizza}" value="trioformaggio" id="trioformaggio">
+                    <label for="trioformaggio">Trio Formaggio</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Size:</td>
+                <td>
+                    <select th:field="*{size}">
+                        <option value="sm">Small</option>
+                        <option value="md">Medium</option>
+                        <option value="lg">Large</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td>
+                    <input type="number" th:field="*{quantity}">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Next</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    
+    
+</body>
+</html>
