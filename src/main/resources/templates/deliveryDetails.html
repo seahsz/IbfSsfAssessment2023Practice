@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Details</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+    
+    <h1>Order Delivery Details</h1>
+
+    <form method="POST" action="/pizza/order" th:object="${deliveryDetails}">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td colspan="2">
+                    <input type="text" th:field="*{name}" placeholder="Placeholder">
+                </td>
+                <td th:if="${#fields.hasErrors('name')}" class="error">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td colspan="2">
+                    <input type="text" th:field="*{address}" placeholder="Placeholder">
+                </td>
+                <td th:if="${#fields.hasErrors('address')}" class="error">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('address')}" th:text="${err}"></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Phone:</td>
+                <td colspan="2">
+                    <input type="text" th:field="*{phoneNumber}" placeholder="Placeholder">
+                </td>
+                <td th:if="${#fields.hasErrors('phoneNumber')}" class="error">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('phoneNumber')}" th:text="${err}"></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Rush:</td>
+                <td>
+                    <input type="checkbox" th:field="*{rush}" value="true">
+                </td>
+            </tr>
+            <tr>
+                <td>Comments:</td>
+                <td colspan="2">
+                    <textarea rows="5" placeholder="Type here" th:field="*{comments}"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit" formmethod="get" formaction="/">Cancel Order</button>
+                </td>
+                <td>
+                    <button type="submit">Place Order</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

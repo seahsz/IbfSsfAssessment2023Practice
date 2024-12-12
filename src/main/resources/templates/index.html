@@ -26,24 +26,31 @@
             </tr>
             <tr>
                 <td>
-                    <input type="radio" th:field="*{pizza}" value="bella" id="bella">
+                    <input type="radio" th:field="*{pizza}" value="bella" id="bella" name="pizza">
                     <label for="bella">Bella</label>
                 </td>
                 <td>
-                    <input type="radio" th:field="*{pizza}" value="margherita" id="margherita">
+                    <input type="radio" th:field="*{pizza}" value="margherita" id="margherita" name="pizza">
                     <label for="margherita">Margherita</label>
                 </td>
                 <td>
-                    <input type="radio" th:field="*{pizza}" value="marinara" id="marinara">
+                    <input type="radio" th:field="*{pizza}" value="marinara" id="marinara" name="pizza">
                     <label for="marinara">Marinara</label>
                 </td>
                 <td>
-                    <input type="radio" th:field="*{pizza}" value="spianatacalabrese" id="spianatacalabrese">
+                    <input type="radio" th:field="*{pizza}" value="spianatacalabrese" id="spianatacalabrese" name="pizza">
                     <label for="spianatacalabrese">Spianata Calabrese</label>
                 </td>
                 <td>
-                    <input type="radio" th:field="*{pizza}" value="trioformaggio" id="trioformaggio">
+                    <input type="radio" th:field="*{pizza}" value="trioformaggio" id="trioformaggio" name="pizza">
                     <label for="trioformaggio">Trio Formaggio</label>
+                </td>
+            </tr>
+            <tr th:if="${#fields.hasErrors('pizza')}" class="error">
+                <td>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('pizza')}" th:text="${err}"></li>
+                    </ul>
                 </td>
             </tr>
             <tr>
@@ -55,11 +62,21 @@
                         <option value="lg">Large</option>
                     </select>
                 </td>
+                <td th:if="${#fields.hasErrors('size')}" class="error">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('size')}" th:text="${err}"></li>
+                    </ul>
+                </td>
             </tr>
             <tr>
                 <td>Quantity:</td>
                 <td>
                     <input type="number" th:field="*{quantity}">
+                </td>
+                <td th:if="${#fields.hasErrors('quantity')}" class="error">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('quantity')}" th:text="${err}"></li>
+                    </ul>
                 </td>
             </tr>
             <tr>

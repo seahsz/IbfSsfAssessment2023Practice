@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+</head>
+<body>
+    
+    <div th:object="${orderConfirm}">
+        <h3>Delivery Details</h3>
+        <p>
+            Order Number: <a th:href="@{/order/{oId}(oId = *{orderId})}" th:text="*{orderId}"></a>
+        </p>
+        <p>
+            Your order will be delivered to <span th:text="*{address}"></span>
+        </p>
+        <p>
+            Pizza cost: <span th:text="*{subTotal}"></span>
+        </p>
+        <p th:if="*{rush}">
+            Rush: $2
+        </p>
+        <p>
+            Total cost: <span th:text="*{totalCost}"></span>
+        </p>
+    </div>
+
+</body>
+</html>
